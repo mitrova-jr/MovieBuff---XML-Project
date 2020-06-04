@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Movie Buff</h1>
+    <h5>Find out details about your favorite movie!</h5>
+    <div class="container p-3" id="box1">
+        <div class="text-left row border-bottom">
+            <div class="col-2"><p class="font-weight-bold">Year of the movie: </p></div>
+            <div class="col-10"><label id="year-text">Year</label></div>
+        </div>
+        <div class="text-left row border-bottom">
+            <div class="col-2"><p class="font-weight-bold">Genre of the movie: </p></div>
+            <div class="col-10"><label id="genre-text">Genre</label></div>
+        </div>
+        <div class="text-left row border-bottom">
+            <div class="col-2"><p class="font-weight-bold">Director of the movie: </p></div>
+            <div class="col-10"><label id="director-text">Director</label></div>
+        </div>
+        <div class="text-left row border-bottom">
+            <div class="col-2"><p class="font-weight-bold">Language of the movie: </p></div>
+            <div class="col-10"><label id="language-text">Language</label></div>
+        </div>
+        <div class="text-left row border-bottom">
+            <div class="col-2"><p class="font-weight-bold">IMDB Rating of the movie: </p></div>
+            <div class="col-10"><label id="rating-text">imdbRating</label></div>
+        </div>
+        <div class="text-left row border-bottom">
+            <div class="col-2"><p class="font-weight-bold">Plot of the movie: </p></div>
+            <div class="col-10"><label id="plot-text">Plot</label></div>
+        </div>
+        <div><input type="text" class="form-control input" id="raw-text" placeholder="Movie Title"></div>
+    </div>
+    
+    <div><input type="button" class="mt-3 btn btn-outline-secondary" id="get-data" value="Give me details" /></div>
+</div>
+
+<script>
+    $(() => {
+        $('#get-data').click(() => {
+            const rawText = $('#raw-text').val();
+            $.get('https://localhost:5001/Home/Check?query=' + rawText, null, 
+                (rawJson) =>{
+                    const details = JSON.parse(rawJson);
+                    $('#year-text').text(details.Year);
+                    $('#genre-text').text(details.Genre);
+                    $('#director-text').text(details.Director);
+                    $('#language-text').text(details.Language);
+                    $('#rating-text').text(details.imdbRating);
+                    $('#plot-text').text(details.Plot);
+
+                }
+            );
+        });
+    });
+
+</script>

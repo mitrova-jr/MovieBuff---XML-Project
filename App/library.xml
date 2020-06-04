@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<List>
+  <Person>
+    <FirstName>ime</FirstName>
+    <LastName>prezime</LastName>
+    <Movie>film</Movie>
+  </Person>
+  <Person>
+    <FirstName>petra</FirstName>
+    <LastName>mitar</LastName>
+    <Movie>avengers</Movie>
+  </Person>
+</List>

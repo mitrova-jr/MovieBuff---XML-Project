@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Contact";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p class="font-weight-bold">Tell me your favorite movie!</p>
+<form id="box2" class="p-3">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="raw-text-firstname">First Name</label>
+      <input type="text" class="form-control" id="raw-text-firstname" placeholder="First Name">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="raw-text-lastname">Last Name</label>
+      <input type="text" class="form-control" id="raw-text-lastname" placeholder="Last Name">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="raw-text-movie">Movie Title</label>
+    <input type="text" class="form-control" id="raw-text-movie" placeholder="Movie Title">
+  </div>
+</form>
+<div class="form-group"><input type="button" class="mt-3 btn btn-outline-secondary" id="submit" value="Submit" /></div>
+
+<script>
+    $(() => {
+        $('#submit').click(() => {
+            const rawTextFirstname = $('#raw-text-firstname').val();
+            const rawTextLastname = $('#raw-text-lastname').val();
+            const rawTextMovie = $('#raw-text-movie').val();
+            $.get('https://localhost:5001/Home/Submit?first=' + rawTextFirstname + '&last=' + rawTextLastname + '&movie=' + rawTextMovie);
+        });
+    });
+
+</script>
